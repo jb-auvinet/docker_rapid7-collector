@@ -1,5 +1,5 @@
 ---
-version: "1.0"
+version: "3.4"
 services:
   rapid7-collector-simu:
     image: jbauvinet/docker_rapid7-collector-simulator:eu
