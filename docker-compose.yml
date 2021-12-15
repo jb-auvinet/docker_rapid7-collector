@@ -13,5 +13,5 @@ services:
     script:
       working_dir: /opt/rapid7/script/
       volumes:
-        - /opt/rapid7/script/:/opt/rapid7/script/
+        - /opt/rapid7/script/:/opt/rapid7/fake_data/
       command: [ "launch_screen.sh" ]
