@@ -1,12 +1,17 @@
 ---
-version: "3.4"
+version: "1.0"
 services:
-  rapid7-collector:
-    image: philippbehmer/docker_rapid7-collector:us
-    container_name: rapid7-collector
+  rapid7-collector-simu:
+    image: jbauvinet/docker_rapid7-collector-simulator:eu
+    container_name: rapid7-collector-simulator
     volumes:
-      - /path/to/persistent/storage/logs/:/opt/rapid7/collector/logs/
-      - /path/to/persistent/storage/felix-cache/:/opt/rapid7/collector/felix-cache/
-      - /path/to/persistent/storage/spillover-directory/:/opt/rapid7/collector/spillover-directory
+      - /opt/rapid7/collector/logs/:/opt/rapid7/collector/logs/
+      - /opt/rapid7/collector/felix-cache/:/opt/rapid7/collector/felix-cache/
+      - /opt/rapid7/collector/spillover-directory/:/opt/rapid7/collector/spillover-directory
     network_mode: "host"
     restart: unless-stopped
+    script:
+      working_dir: /opt/rapid7/script/
+      volumes:
+        - /opt/rapid7/script/:/opt/rapid7/script/
+      command: [ "launch_screen.sh" ]
